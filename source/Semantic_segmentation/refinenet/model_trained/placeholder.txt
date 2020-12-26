@@ -1,0 +1,1 @@
+Just to include the directory model_trained/ in git.

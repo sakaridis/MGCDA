@@ -1,0 +1,73 @@
+% Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
+function prediction_fused =...
+    fuse_soft_predictions_adaptive_confidence_proportion_dynamic(...
+    prediction_orig, prediction_extra, fusion_parameters)
+%FUSE_SOFT_PREDICTIONS_ADAPTIVE_CONFIDENCE_PROPORTION_DYNAMIC  Fuse two soft
+%predictions for segmentation of the same image by adaptively weighting each of
+%the two at each pixel with the proportion of its confidence over the sum of the
+%confidences of both predictions at the pixel, i.e.
+%w_orig = conf_orig / (conf_orig + alpha * conf_extra) and
+%w_extra = alpha * conf_extra / (conf_orig + alpha * conf_extra)
+%alpha regulates the effect of the extra prediction on the fused result and is
+%set to a lower value than the default for pixels with inconsistent dynamic
+%predictions.
+
+% Read parameters for prediction fusion.
+alpha_high = fusion_parameters.alpha_high;
+alpha_low = fusion_parameters.alpha_low;
+thresh_daytime_confidence_for_twilight_prediction =...
+    fusion_parameters.thresh_daytime_confidence_for_twilight_prediction;
+thresh_twilight_confidence_for_daytime_prediction =...
+    fusion_parameters.thresh_twilight_confidence_for_daytime_prediction;
+class_indices_dynamic = fusion_parameters.class_indices_dynamic;
+
+% Compute the confidence map for both predictions.
+[conf_orig, prediction_orig_hard] = max(prediction_orig, [], 3);
+[conf_extra, prediction_extra_hard] = max(prediction_extra, [], 3);
+
+% Determine pixels where the lower value of alpha should be used.
+is_prediction_orig_dynamic = ismember(prediction_orig_hard,...
+    class_indices_dynamic);
+
+is_prediction_extra_dynamic = ismember(prediction_extra_hard,...
+    class_indices_dynamic);
+
+[H, W, n_classes] = size(prediction_orig);
+[J, I] = meshgrid(1:W, 1:H);
+indices_predictions_orig =...
+    sub2ind([H, W, n_classes], I(:), J(:), prediction_orig_hard(:));
+conf_extra_for_orig_predictions = prediction_extra(indices_predictions_orig);
+conf_extra_for_orig_predictions =...
+    reshape(conf_extra_for_orig_predictions, [H, W]);
+is_conf_extra_for_orig_predictions_low = conf_extra_for_orig_predictions...
+    <= thresh_daytime_confidence_for_twilight_prediction;
+is_conf_extra_for_dynamic_orig_predictions_low =...
+    is_conf_extra_for_orig_predictions_low...
+    & is_prediction_orig_dynamic;
+
+indices_predictions_extra =...
+    sub2ind([H, W, n_classes], I(:), J(:), prediction_extra_hard(:));
+conf_orig_for_extra_predictions = prediction_orig(indices_predictions_extra);
+conf_orig_for_extra_predictions =...
+    reshape(conf_orig_for_extra_predictions, [H, W]);
+is_conf_orig_for_extra_predictions_low = conf_orig_for_extra_predictions...
+    <= thresh_twilight_confidence_for_daytime_prediction;
+is_conf_orig_for_dynamic_extra_predictions_low =...
+    is_conf_orig_for_extra_predictions_low...
+    & is_prediction_extra_dynamic;
+
+is_either_confidence_for_cross_dynamic_prediction_low =...
+    is_conf_extra_for_dynamic_orig_predictions_low...
+    | is_conf_orig_for_dynamic_extra_predictions_low;
+
+alpha_ada = alpha_low * is_either_confidence_for_cross_dynamic_prediction_low...
+    + alpha_high * ~is_either_confidence_for_cross_dynamic_prediction_low;
+
+% Fuse adaptively.
+prediction_fused =...
+    (conf_orig ./ (conf_orig + alpha_ada .* conf_extra)) .* prediction_orig...
+    + (alpha_ada .* conf_extra ./ (conf_orig + alpha_ada .* conf_extra))...
+    .* prediction_extra;
+
+end
+
