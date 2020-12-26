@@ -73,7 +73,7 @@ The results of the guided refinement, i.e. the refined segmentation of the dark 
   cd source/scripts
   ./MGCDA_test.sh
   ```
-  The generated prediction files are written under the directory `output/RefineNet/Dark_Zurich_test_anon/` and include four different prediction formats (Ids, trainIds, color, raw soft predictions) to facilitate further usage.
+  The generated prediction files are written under the directory `output/RefineNet/Dark_Zurich_test_anon/` and include four different prediction formats (Ids, trainIds, color, raw soft predictions) to facilitate further usage. **Note**: the mean IoU of the pre-trained MGCDA model on this anonymized version is 42.6%, which is slightly higher than the 42.5% figure reported in the paper, because the latter figure corresponds to the original, non-anonymous version of the test set.
 
 You can also test MGCDA on other sets, such as Nighttime Driving, BDD100K-night (a selected nighttime subset of the segmentation set of BDD100K), and the validation set of Dark Zurich, simply by:
 1. downloading the respective set, similarly to above
