@@ -2,6 +2,9 @@
 
 Created by Christos Sakaridis at Computer Vision Lab, ETH Zurich.
 
+<img source="images/MGCDA_overview.png" align="center" width=100%>
+<br/><br/>
+
 
 ### Overview
 
