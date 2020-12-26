@@ -10,7 +10,9 @@ Created by Christos Sakaridis at Computer Vision Lab, ETH Zurich.
 
 This is the source code for the MGCDA method for semantic segmentation at nighttime.
 
-MGCDA is presented in our IEEE TPAMI 2020 paper [**Map-Guided Curriculum Domain Adaptation and Uncertainty-Aware Evaluation for Semantic Nighttime Image Segmentation**][arxiv] and its original version GCMA was introduced in our [ICCV 2019 paper][iccv_19].
+**MGCDA**: [**Paper**][arxiv] | [**Dark Zurich Dataset**][project_page] | [**Challenge**][uiou_challenge] | [**Project**][project_page] | [**Conference Paper**][iccv_19]
+
+MGCDA is presented in our IEEE TPAMI 2020 paper [Map-Guided Curriculum Domain Adaptation and Uncertainty-Aware Evaluation for Semantic Nighttime Image Segmentation][arxiv] and its original version GCMA was introduced in our [ICCV 2019 paper][iccv_19].
 
 For the source code for the uncertainty-aware semantic segmentation evaluation with the UIoU metric, you can consult the [UIoU Dark Zurich Challenge page][uiou_challenge].
 
