@@ -19,7 +19,7 @@ For the source code for the uncertainty-aware semantic segmentation evaluation w
 
 ### License
 
-This software is made available for non-commercial use under a creative commons [license](LICENSE.txt). You can find a summary of the license [here][cc_license]. For a commercial license please contact the authors.
+This software is made available for non-commercial use under a creative commons [license](LICENSE.txt). You can find a summary of the license [here][cc_license].
 
 
 ### Contents
