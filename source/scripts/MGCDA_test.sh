@@ -8,7 +8,7 @@
 # --------------------------------------------------------------------------------------------------------------
 
 # Change directory to that containing the test script for MGCDA.
-cd ../../../RefineNet/Union_Cityscapes_Dark_Zurich/scripts
+cd ../Semantic_segmentation/Experiments/RefineNet/Union_Cityscapes_Dark_Zurich/scripts
 
 # Generate predictions with MGCDA pre-trained model.
 ./DarkCityscapes_DarkZurichNight_CycleGANfc-DarkZurich_twilight_labels_refinenet_init_geoRefDynDay-w_1-test_DarkZurich_testAnon.sh
