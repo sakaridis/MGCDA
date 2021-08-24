@@ -147,7 +147,7 @@ https://www.trace.ethz.ch/publications/2019/GCMA_UIoU
 [arxiv]: <https://arxiv.org/pdf/2005.14553.pdf>
 [iccv_19]: <https://openaccess.thecvf.com/content_ICCV_2019/papers/Sakaridis_Guided_Curriculum_Model_Adaptation_and_Uncertainty-Aware_Evaluation_for_Semantic_Nighttime_ICCV_2019_paper.pdf>
 [uiou_challenge]: <https://competitions.codalab.org/competitions/23553>
-[mgcda_model]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/refinenet_res101_cityscapes_DarkCityscapes_DarkZurichv3twilight_CycleGANfc_DarkZurichv3night_CycleGANfc_DarkZurich_v3day_labels_original_w_1_v3twilight_labels_adaptedPrevGeoRefDyn_w_1_epoch_10.mat>
+[mgcda_model]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/refinenet_res101_cityscapes_DarkCityscapes_DarkZurichTwilight_CycleGANfc_DarkZurichNight_CycleGANfc_DarkZurich_day_labels_original_w_1_twilight_labels_adaptedPrevGeoRefDyn_w_1_epoch_10.mat>
 [refinenet_model]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/refinenet_res101_cityscapes_original.mat>
 [resnet101_backbone]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/imagenet-resnet-101-dag.mat>
 [dark_zurich_test]: <https://data.vision.ee.ethz.ch/csakarid/shared/GCMA_UIoU/Dark_Zurich_test_anon_withoutGt.zip>
