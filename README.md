@@ -106,6 +106,7 @@ To test MGCDA on your own custom set, you need to:
   ./MGCDA_train.sh
   ```
   The trained MGCDA model is stored in the directory `output/RefineNet/Union_Cityscapes_Dark_Zurich/` with the name `refinenet_res101_cityscapes_DarkCityscapes_DarkZurichTwilight_CycleGANfc_DarkZurichNight_CycleGANfc_DarkZurich_day_labels_original_w_1_twilight_labels_adaptedPrevGeoRefDyn_w_1_epoch_10.mat`.
+- You can use our pretrained CycleGAN models for translation to [twilight][cyclegan_twilight_model] and [nighttime][cyclegan_nighttime_model] if you want to avoid training CycleGAN.
 
 
 ### Acknowledgments
@@ -157,3 +158,5 @@ https://www.trace.ethz.ch/publications/2019/GCMA_UIoU
 [project_page]: <https://www.trace.ethz.ch/publications/2019/GCMA_UIoU>
 [cc_license]: <http://creativecommons.org/licenses/by-nc/4.0/>
 [cityscapes_downloads]: <https://www.cityscapes-dataset.com/downloads/>
+[cyclegan_twilight_model]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/CycleGAN/twilight/45_net_G_A.pth>
+[cyclegan_nighttime_model]: <https://data.vision.ee.ethz.ch/csakarid/shared/MGCDA_UIoU/CycleGAN/night/45_net_G_A.pth>
